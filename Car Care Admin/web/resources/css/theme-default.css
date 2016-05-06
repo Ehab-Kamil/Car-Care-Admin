@@ -104,7 +104,7 @@ body {
 }
 .page-container .page-content {
   min-height: 100%;
-  margin-left: 220px;
+ /* margin-left: 220px;*/
   background: #f5f5f5 url('../img/bg.png') left top repeat;
   position: relative;
   zoom: 1;
@@ -3872,7 +3872,7 @@ background: #1caf9a !important;
   float: left;
   width: 100%;
   min-height: 100%;
-  background: url("../img/bg.png") left top repeat #1b1e24;
+  background: url("./img/backgrounds/wall_1.jpg") left top repeat #1b1e24;
 }
 .login-container .login-box {
   width: 400px;
@@ -3964,7 +3964,7 @@ background: #1caf9a !important;
   color: #FFF;
 }
 .login-container.lightmode {
-  background: url("../img/backgrounds/wall_1.jpg") left top no-repeat;
+  background: url("./img/backgrounds/wall_1.jpg") left top no-repeat;
 }
 .login-container.lightmode .login-box .login-body {
   background: rgba(255, 255, 255, 0.2);
