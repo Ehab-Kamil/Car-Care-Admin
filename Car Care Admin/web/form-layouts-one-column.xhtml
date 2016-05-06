@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+       xmlns:p="http://primefaces.org/ui" 
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <ui:composition template="template/AdminTemplate.xhtml">
                 <!-- END X-NAVIGATION VERTICAL -->                     
 
@@ -23,7 +25,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             
-                            <form class="form-horizontal">
+                            <h:form class="form-horizontal">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h3 class="panel-title"><strong>Add Service Center</strong></h3>
@@ -111,12 +113,52 @@
                                         </div>
                                     </div>
                                 </div>
+                                <center>
+                                    <p:commandButton value="Model" type="button" onclick="PF('dlg1').show();" />
+                                    <p:commandButton value="Service" type="button" onclick="PF('dlg2').show();" />
+                                </center>
+                                <p:dialog header="Supported Car" draggable="false" modal="true" widgetVar="dlg1" showEffect="explode" hideEffect="explode" height="200" width="500">
+                                    <h:form >
+                                        <p:growl id="msgs"   />
+
+                                        <p:panel style="border-style: none">
+                                            <h:panelGrid columns="2" cellpadding="5">
+                                                <p:outputLabel for="country" value="Make: " />
+                                                <p:selectOneMenu id="country" value="#{dropdownView.country}" style="width:150px">
+                                                    <p:ajax listener="#{dropdownView.onCountryChange}" update="city" />
+                                                    <f:selectItem itemLabel="Select Make" itemValue="" noSelectionOption="true" />
+                                                    <f:selectItems value="#{dropdownView.countries}" />
+                                                </p:selectOneMenu>
+
+                                                <p:outputLabel for="city" value="Model: " />
+                                                <p:selectOneMenu id="city" value="#{dropdownView.city}" style="width:150px">
+                                                    <f:selectItem itemLabel="Select Model" itemValue="" noSelectionOption="true" />
+                                                    <f:selectItems value="#{dropdownView.cities}" />
+                                                </p:selectOneMenu>
+
+                                                <p:outputLabel for="city" value="Trim: " />
+                                                <p:selectOneMenu id="trim" value="#{dropdownView.city}" style="width:150px">
+                                                    <f:selectItem itemLabel="Select Trim" itemValue="" noSelectionOption="true" />
+                                                    <f:selectItems value="#{dropdownView.cities}" />
+                                                </p:selectOneMenu>
+                                            </h:panelGrid>
+
+                                            <p:separator />
+
+                                            <p:commandButton value="Submit" update="msgs" actionListener="#{dropdownView.displayLocation}" icon="ui-icon-check" />
+                                        </p:panel>
+                                    </h:form>
+                                </p:dialog>
+                                <p:dialog header="Effects" draggable="false" modal="true" widgetVar="dlg2" showEffect="explode" hideEffect="explode" height="100">
+                                    <h:outputText value="list and Button" />
+                                </p:dialog>
+                  
                                 <div class="panel-footer">
                                     <button class="btn btn-default">Clear Form</button>                                    
                                     <button class="btn btn-primary pull-right">Submit</button>
                                 </div>
                             </div>
-                            </form>
+                            </h:form>
                             
                         </div>
                     </div>                    
